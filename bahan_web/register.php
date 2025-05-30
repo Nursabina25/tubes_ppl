@@ -36,20 +36,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    // Persiapkan pernyataan SQL
-    $stmt = $conn->prepare("INSERT INTO users (full_name, email, password, gender, birthdate, status, skills) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssss", $full_name, $email, $password, $gender, $birthdate, $status, $skills);
-
-    // Eksekusi pernyataan
-    if ($stmt->execute()) {
-        header("Location: index.php");
-        exit(); // Pastikan untuk menghentikan skrip setelah redirect
-    } else {
-        echo "Pendaftaran gagal: " . $stmt->error;
-    }
-
-    // Tutup pernyataan
-    $stmt->close();
-    $conn->close();
-}
-?>
+    
